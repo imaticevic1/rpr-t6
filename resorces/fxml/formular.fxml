@@ -1,0 +1,113 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.TextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="4" vgap="4" prefWidth="380" prefHeight="450">
+    <stylesheets>
+        <URL value="@/css/formular.css" />
+    </stylesheets>
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+        <ColumnConstraints hgrow="SOMETIMES" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints  />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints  />
+        <RowConstraints  />
+        <RowConstraints />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints  />
+        <RowConstraints  />
+        <RowConstraints />
+        <RowConstraints vgrow="SOMETIMES" />
+        <RowConstraints  />
+        <RowConstraints  />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <padding>
+        <Insets topRightBottomLeft="20.0"/>
+    </padding>
+    <children>
+        <Label id="imeLabela" text="Ime: " />
+        <Label GridPane.rowIndex="1" id="prezime" text="Prezime: " />
+        <Label GridPane.rowIndex="2" id="indeks" text="Broj indeksa: " />
+        <Label GridPane.rowIndex="5" id="jmbg" text="JMBG: " />
+        <Label GridPane.rowIndex="4" id="datumRodjenja" text="Datum rođenja: " />
+        <Label GridPane.rowIndex="6" id="mjestoRodjenja" text="Mjesto rodjenja: " />
+        <Label GridPane.rowIndex="8" id="kontaktAdresa" text="Adresa: " />
+        <Label GridPane.rowIndex="9" id="kontaktTelefon" text="Kontakt telefon: " />
+        <Label GridPane.rowIndex="10" id="emailAdresa" text="email: " />
+        <Label GridPane.rowIndex="12" id="odsjek" text="Odsjek: " />
+        <Label GridPane.rowIndex="13" id="ciklusStudija" text="Ciklus: " />
+        <Label GridPane.rowIndex="14" id="redovanSamofin" text="Status: " />
+        <Button GridPane.rowIndex="15" fx:id="dugmePotvrdi" text="Potvrdi" onAction="#dugmeKliknuto" />
+        <TextField GridPane.columnIndex="1" fx:id="poljeIme" />
+        <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="poljePrezime" />
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="poljeBrojIndeksa" />
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" fx:id="jmbgPolje" />
+        <TextField GridPane.rowIndex="8" GridPane.columnIndex="1" fx:id="AdresaPolje"  />
+        <TextField GridPane.rowIndex="9" GridPane.columnIndex="1" fx:id="telefonpolje"/>
+        <TextField GridPane.columnIndex="1" GridPane.rowIndex="10" fx:id="emailPolje" />
+        <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="4" fx:id="izborDatuma" onAction="#dateHandler"/>
+        <ComboBox editable="true" prefWidth="150" GridPane.rowIndex="6" fx:id="mjestoRodjenja" GridPane.columnIndex="1" promptText="izaberi"  >
+            <items>
+                <FXCollections fx:factory="observableArrayList"  >
+                    <String  fx:value="Vareš" />
+                    <String fx:value="Sarajevo" />
+                    <String fx:value="Zenica" />
+                    <String fx:value="Banja Luka" />
+                    <String fx:value="Tešanj" />
+                    <String fx:value="Vitez" />
+                    <String fx:value="Kiseljak" />
+                    <String fx:value="Visoko" />
+                    <String fx:value="Kreševo" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+<ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="12" promptText="izaberi odsjek" >
+    <items>
+        <FXCollections fx:factory="observableArrayList">
+            <String fx:value="AiE" />
+            <String fx:value="RI" />
+            <String fx:value="EE" />
+            <String fx:value="TK" />
+        </FXCollections>
+    </items>
+</ComboBox>
+        <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="13" promptText="Izaberi ciklus" >
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Bachelor" />
+                    <String fx:value="Master" />
+                    <String fx:value="Stručni studij" />
+                    <String fx:value="Doktorski studij" />
+                </FXCollections>
+            </items>
+        </ComboBox>
+    <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="14" promptText="izaberi" >
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Redovan" />
+                <String fx:value="Samofinancirajući" />
+                <String fx:value="Vandredan" />
+                <String fx:value="Gost" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+    </children>
+</GridPane>
