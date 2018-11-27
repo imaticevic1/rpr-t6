@@ -20,6 +20,8 @@ public class Controller {
     public TextField telefonpolje;
     public CheckBox daBoks;
     public CheckBox neBoks;
+    public CheckBox redovan;
+    public CheckBox Samofinancirajući;
     private boolean imeValidno;
     private boolean prezimeValidno;
     private boolean brIndeksaValidan;
@@ -33,6 +35,7 @@ public class Controller {
     private String control = null;
     private String jmbg = null;
     private String selekcija = null;
+    private String status = null;
     private ArrayList<String> nastavci = new ArrayList<String>();
     {
         nastavci.add("hotmail.com");
@@ -214,8 +217,11 @@ public class Controller {
         if(!telefonValidan)
             poruka = poruka + "Netočan broj telefona\n";
         if(!neBoks.isSelected() && !daBoks.isSelected())
-            poruka = poruka + "Nijedan boks nije selektiran!";
+            poruka = poruka + "Nijedan boks nije selektiran!\n";
+        if(!Samofinancirajući.isSelected() && !redovan.isSelected())
+            poruka = poruka + "Niste izbarali da li ste redovan ili samofinancirajući!";
         return poruka;
+
     }
 
     public void dugmeKliknuto(ActionEvent actionEvent) {
@@ -236,6 +242,8 @@ public class Controller {
             System.out.println("Kontakt telefon: " + telefonpolje.getText());
             if(selekcija != null)
                 System.out.println("Student" + selekcija + "boračkim kategorijama");
+            if(status != null)
+                System.out.println("Student je " + status + ".");
         }
 
 
@@ -244,14 +252,24 @@ public class Controller {
     public void choice1(ActionEvent actionEvent) {
         if(neBoks.isSelected())
             neBoks.setSelected(false);
-        daBoks.setSelected(true);
         selekcija = " pripada ";
     }
 
     public void choice2(ActionEvent actionEvent) {
         if(daBoks.isSelected())
             daBoks.setSelected(false);
-        neBoks.setSelected(true);
         selekcija = " ne pripada ";
+    }
+
+    public void redovan(ActionEvent actionEvent) {
+        if(Samofinancirajući.isSelected())
+            Samofinancirajući.setSelected(false);
+        status = "redovan";
+    }
+
+    public void samofinancirajući(ActionEvent actionEvent) {
+        if(redovan.isSelected())
+            redovan.setSelected(false);
+        status = "samofinancirajući";
     }
 }
