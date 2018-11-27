@@ -69,11 +69,11 @@
                 <Insets topRightBottomLeft="20.0"/>
             </padding>
         <children>
-            <Label GridPane.rowIndex="0" id="jmbg" text="JMBG: " />
-            <Label GridPane.rowIndex="1" id="datumRodjenja" text="Datum rođenja: " />
+            <Label GridPane.rowIndex="1" id="jmbg" text="JMBG: " />
+            <Label GridPane.rowIndex="0" id="datumRodjenja" text="Datum rođenja: " />
             <Label GridPane.rowIndex="2" id="mjestoRodjenja" text="Mjesto rodjenja: " />
-            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="izborDatuma" onAction="#dateHandler"/>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="jmbgPolje" />
+            <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="izborDatuma" onAction="#dateHandler"/>
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="jmbgPolje" />
             <ComboBox editable="true" prefWidth="150" GridPane.rowIndex="2" fx:id="mjestoRodjenja" GridPane.columnIndex="1" promptText="izaberi"  >
             <items>
                 <FXCollections fx:factory="observableArrayList"  >
@@ -191,10 +191,8 @@
                 </padding>
                 <children>
                     <Label GridPane.rowIndex="0"  GridPane.columnSpan="4" text="Pripadate li boračkim kategorijama?" />
-                    <Label GridPane.rowIndex="1" text="Da" alignment="BASELINE_LEFT"/>
-                    <Label GridPane.rowIndex="1" text="Ne" alignment="BASELINE_LEFT" GridPane.columnIndex="2"/>
-                    <CheckBox fx:id="daBoks" GridPane.rowIndex="1" GridPane.columnIndex="1" alignment="CENTER_RIGHT" />
-                    <CheckBox fx:id="neBoks" GridPane.rowIndex="1" GridPane.columnIndex="3" alignment="CENTER_RIGHT" />
+                    <CheckBox fx:id="daBoks" GridPane.rowIndex="1" text="Da" GridPane.columnIndex="1" alignment="CENTER_RIGHT" onAction="#choice1" />
+                    <CheckBox fx:id="neBoks" GridPane.rowIndex="1" text="Ne" GridPane.columnIndex="3" alignment="CENTER_RIGHT" onAction="#choice2"/>
                 </children>
             </GridPane>
 

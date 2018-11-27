@@ -32,6 +32,7 @@ public class Controller {
     private String datumRodjenja = null;
     private String control = null;
     private String jmbg = null;
+    private String selekcija = null;
     private ArrayList<String> nastavci = new ArrayList<String>();
     {
         nastavci.add("hotmail.com");
@@ -207,11 +208,13 @@ public class Controller {
         if(!prezimeValidno)
             poruka = poruka + "Netočno prezime!\n";
         if(!brIndeksaValidan)
-            poruka = poruka + "Nekorektan broj indeksa\n";
+            poruka = poruka + "Nekorektan broj indeksa!\n";
         if(!datumValidan || !jmbgValidan)
-            poruka = poruka + "Datum i JMBG se ne podudaraju\n";
+            poruka = poruka + "Datum i JMBG se ne podudaraju!\n";
         if(!telefonValidan)
-            poruka = poruka + "Netočan broj telefona";
+            poruka = poruka + "Netočan broj telefona\n";
+        if(!neBoks.isSelected() && !daBoks.isSelected())
+            poruka = poruka + "Nijedan boks nije selektiran!";
         return poruka;
     }
 
@@ -231,8 +234,24 @@ public class Controller {
             System.out.println("email: " + emailPolje.getText());
             System.out.println("Adresa: " + AdresaPolje.getText());
             System.out.println("Kontakt telefon: " + telefonpolje.getText());
+            if(selekcija != null)
+                System.out.println("Student" + selekcija + "boračkim kategorijama");
         }
 
 
+    }
+
+    public void choice1(ActionEvent actionEvent) {
+        if(neBoks.isSelected())
+            neBoks.setSelected(false);
+        daBoks.setSelected(true);
+        selekcija = " pripada ";
+    }
+
+    public void choice2(ActionEvent actionEvent) {
+        if(daBoks.isSelected())
+            daBoks.setSelected(false);
+        neBoks.setSelected(true);
+        selekcija = " ne pripada ";
     }
 }
