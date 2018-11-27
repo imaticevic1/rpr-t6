@@ -18,6 +18,8 @@ public class Controller {
     public TextField emailPolje;
     public Button dugmePotvrdi;
     public TextField telefonpolje;
+    public CheckBox daBoks;
+    public CheckBox neBoks;
     private boolean imeValidno;
     private boolean prezimeValidno;
     private boolean brIndeksaValidan;
@@ -89,6 +91,11 @@ public class Controller {
                 jmbgPolje.getStyleClass().removeAll("poljeIspravno");
                 jmbgPolje.getStyleClass().add("poljeNeispravno");
                 jmbgValidan = false;
+            }
+            if(!jmbgValidan && jmbg.length() == 13 && control.equals(jmbg.substring(0,7))){
+                jmbgPolje.getStyleClass().removeAll("poljeNeispravno");
+                jmbgPolje.getStyleClass().add("poljeIspravno");
+                jmbgValidan = true;
             }
         }
     }
@@ -219,7 +226,7 @@ public class Controller {
         else {
             System.out.println("Ime: " + poljeIme.getText());
             System.out.println("Prezime: " + poljePrezime.getText());
-            System.out.println("Broj indeksa" + poljeBrojIndeksa.getText());
+            System.out.println("Broj indeksa: " + poljeBrojIndeksa.getText());
             System.out.println("Datum rođenja: " + datumRodjenja);
             System.out.println("email: " + emailPolje.getText());
             System.out.println("Adresa: " + AdresaPolje.getText());
