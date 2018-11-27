@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,6 +23,8 @@ public class Controller {
     public CheckBox neBoks;
     public CheckBox redovan;
     public CheckBox Samofinancirajući;
+    public ComboBox izborGodine;
+    public FXCollections kolekcija;
     private boolean imeValidno;
     private boolean prezimeValidno;
     private boolean brIndeksaValidan;
@@ -87,9 +90,10 @@ public class Controller {
             datumValidan = true;
         }
         String s2 = d.toString().substring(8,10) + d.toString().substring(5,7) + d.toString().substring(1,4);
+        System.out.println(s2);
         if(control == null)
             control = s2;
-        if(control != s2) {
+        if(control != s2 && jmbg.length() > 7) {
             control = s2;
             if(!control.equals(jmbg.substring(0,7)) && jmbgValidan && jmbg.length() == 13){
                 jmbgPolje.getStyleClass().removeAll("poljeIspravno");
@@ -224,6 +228,7 @@ public class Controller {
 
     }
 
+
     public void dugmeKliknuto(ActionEvent actionEvent) {
         if(!korektanUnos().equals("")){
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -271,5 +276,9 @@ public class Controller {
         if(redovan.isSelected())
             redovan.setSelected(false);
         status = "samofinancirajući";
+    }
+
+    public void izborGodine(ActionEvent actionEvent) {
+
     }
 }

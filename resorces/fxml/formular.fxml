@@ -158,16 +158,16 @@
             <CheckBox fx:id="redovan" GridPane.rowIndex="3" text="Redovan" GridPane.columnIndex="0" alignment="CENTER_RIGHT" onAction="#redovan" />
             <CheckBox fx:id="Samofinancirajući" GridPane.rowIndex="3" text="Samofinancirajući" GridPane.columnSpan="2" onAction="#samofinancirajući" GridPane.columnIndex="1" alignment="CENTER_RIGHT" />
             <Label GridPane.rowIndex="2"  text="Godina studija:" />
-            <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="izaberi godinu" >
+            <ComboBox fx:id="izborGodine" onAction="#izborGodine" editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="izaberi godinu" >
                 <items>
-                    <FXCollections fx:factory="observableArrayList">
+                    <FXCollections fx:factory="observableArrayList" fx:id="kolekcija">
                         <String fx:value="Prva" />
                         <String fx:value="Druga" />
                         <String fx:value="Treća" />
                     </FXCollections>
                 </items>
             </ComboBox>
-            <GridPane GridPane.rowIndex="4"  vgap="4" hgap="4" GridPane.columnSpan="2">
+            <GridPane GridPane.rowIndex="4"  vgap="4" hgap="4" GridPane.columnSpan="2" >
                 <columnConstraints>
                     <ColumnConstraints/>
                     <ColumnConstraints/>
@@ -187,7 +187,6 @@
                     <CheckBox fx:id="neBoks" GridPane.rowIndex="1" text="Ne" GridPane.columnIndex="3" alignment="CENTER_RIGHT" onAction="#choice2"/>
                 </children>
             </GridPane>
-
         </children>
     </GridPane>
         <Button GridPane.rowIndex="15" fx:id="dugmePotvrdi" text="Potvrdi" onAction="#dugmeKliknuto" />
