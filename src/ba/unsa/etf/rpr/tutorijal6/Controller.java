@@ -1,4 +1,4 @@
-package sample;
+package ba.unsa.etf.rpr.tutorijal6;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -78,10 +78,10 @@ public class Controller {
                 if (!control.equals(s.substring(0, 7)))
                     return false;
             }
-                if(s.length() == 13){
+               /* if(s.length() == 13){
                     int j = 0;
                     while( j < 11 ){
-                        suma = suma + broj*(Integer.valueOf(s.substring(j,j+2)));
+                        suma = suma + broj*(Integer.valueOf(s.substring(j,j+1))+Integer.valueOf(s.substring(j+1,j+2)));
                         System.out.println(Integer.valueOf(s.substring(j,j+2)));
                         broj -= 1;
                         j += 2;
@@ -92,7 +92,7 @@ public class Controller {
                     System.out.println( cifra );
                     if(cifra != Integer.valueOf(s.substring(12,13)))
                         return false;
-                }
+                }*/
                 jmbg = s;
         return true;
     }
@@ -311,9 +311,9 @@ public class Controller {
         if(!smjerValidan || smjerBoks.getSelectionModel().getSelectedItem() == null)
             poruka = poruka + "Neispravan odsjek na fakultetu!\n";
         if(!godinaValidna || godinaStudija.getSelectionModel().getSelectedItem() == null)
-            poruka = poruka + "Neispravna godina studija!";
+            poruka = poruka + "Neispravna godina studija!\n";
         if(!validanCiklus || ciklusStudija.getSelectionModel().getSelectedItem() == null)
-            poruka = poruka + "Neispravna godina studija!";
+            poruka = poruka + "Neispravan ciklus studija!";
         return poruka;
 
     }

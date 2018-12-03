@@ -12,7 +12,8 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
-<GridPane fx:controller="sample.Controller"
+<?import javafx.scene.control.Tooltip?>
+<GridPane fx:controller="ba.unsa.etf.rpr.tutorijal6.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="4" vgap="4" prefWidth="380" prefHeight="400">
     <stylesheets>
         <URL value="@/css/formular.css" />
@@ -49,9 +50,21 @@
             <Label id="imeLabela" text="Ime: " />
             <Label GridPane.rowIndex="1" id="prezime" text="Prezime: " />
             <Label GridPane.rowIndex="2" id="indeks" text="Broj indeksa: " />
-            <TextField GridPane.columnIndex="1" fx:id="poljeIme" />
-            <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="poljePrezime" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="poljeBrojIndeksa" />
+            <TextField GridPane.columnIndex="1" fx:id="poljeIme" >
+                    <tooltip>
+                        <Tooltip text="Unesite svoje ime" />
+                    </tooltip>
+                </TextField>
+                <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="poljePrezime" >
+                    <tooltip>
+                        <Tooltip text="Unesite svoje prezime" />
+                    </tooltip>
+                </TextField>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="poljeBrojIndeksa" >
+                    <tooltip>
+                        <Tooltip text="Unesite broj indeksa" />
+                    </tooltip>
+                </TextField>
             </children>
         </GridPane>
         <GridPane alignment="CENTER" hgap="4" vgap="4" styleClass="groupBox" GridPane.rowIndex="1" >
@@ -73,7 +86,11 @@
             <Label GridPane.rowIndex="0" id="datumRodjenja" text="Datum rođenja: " />
             <Label GridPane.rowIndex="2" id="mjestoRodjenja" text="Mjesto rodjenja: " />
             <DatePicker GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="izborDatuma" onAction="#dateHandler"/>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="jmbgPolje" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="jmbgPolje" >
+                <tooltip>
+                    <Tooltip text="Unesite jedinstveni matični broj" />
+                </tooltip>
+            </TextField>
             <ComboBox editable="true" prefWidth="150" GridPane.rowIndex="2" fx:id="mjestoRodjenja" GridPane.columnIndex="1" promptText="izaberi"  >
             <items>
                 <FXCollections fx:factory="observableArrayList"  >
@@ -88,6 +105,9 @@
                     <String fx:value="Kreševo" />
                 </FXCollections>
             </items>
+                <tooltip>
+                    <Tooltip text="Izaberite mjesto rodjenja" />
+                </tooltip>
         </ComboBox>
         </children>
         </GridPane>
@@ -109,9 +129,21 @@
                 <Label GridPane.rowIndex="0" id="kontaktAdresa" text="Adresa: " />
                 <Label GridPane.rowIndex="1" id="kontaktTelefon" text="Kontakt telefon: " />
                 <Label GridPane.rowIndex="2" id="emailAdresa" text="email: " />
-                <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="AdresaPolje" />
-                <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="telefonpolje"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="emailPolje" />
+                <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="AdresaPolje" >
+                    <tooltip>
+                        <Tooltip text="Unesite adresu" />
+                    </tooltip>
+                </TextField>
+                <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="telefonpolje" >
+                    <tooltip>
+                        <Tooltip text="Unesite broj telefona" />
+                    </tooltip>
+                </TextField>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="emailPolje" >
+                    <tooltip>
+                        <Tooltip text="Unesite email" />
+                    </tooltip>
+                </TextField>
             </children>
         </GridPane>
     <GridPane alignment="CENTER" hgap="4" vgap="4" GridPane.rowIndex="3" styleClass="groupBox" >
@@ -143,6 +175,9 @@
                         <String fx:value="TK" />
                     </FXCollections>
                 </items>
+                <tooltip>
+                    <Tooltip text="Odaberite odsjek na studiju" />
+                </tooltip>
             </ComboBox>
             <ComboBox fx:id="ciklusStudija" editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Izaberi ciklus" >
                 <items>
@@ -153,6 +188,9 @@
                         <String fx:value="Doktorski studij" />
                     </FXCollections>
                 </items>
+                <tooltip>
+                    <Tooltip text="Odaberite ciklus studija" />
+                </tooltip>
             </ComboBox>
             <CheckBox fx:id="redovan" GridPane.rowIndex="3" text="Redovan" GridPane.columnIndex="0" alignment="CENTER_RIGHT" onAction="#redovan" />
             <CheckBox fx:id="Samofinancirajući" GridPane.rowIndex="3" text="Samofinancirajući" GridPane.columnSpan="2" onAction="#samofinancirajući" GridPane.columnIndex="1" alignment="CENTER_RIGHT" />
@@ -165,6 +203,9 @@
                         <String fx:value="Treća" />
                     </FXCollections>
                 </items>
+                <tooltip>
+                    <Tooltip text="Odaberite smjer" />
+                </tooltip>
             </ComboBox>
             <GridPane GridPane.rowIndex="4"  vgap="4" hgap="4" GridPane.columnSpan="2">
                 <columnConstraints>
