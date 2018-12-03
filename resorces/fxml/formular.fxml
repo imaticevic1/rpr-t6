@@ -12,7 +12,6 @@
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
 <GridPane fx:controller="sample.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="4" vgap="4" prefWidth="380" prefHeight="400">
     <stylesheets>
@@ -81,7 +80,7 @@
                     <String  fx:value="Vareš" />
                     <String fx:value="Sarajevo" />
                     <String fx:value="Zenica" />
-                    <String fx:value="Banja Luka" />
+                    <String fx:value="BanjaLuka" />
                     <String fx:value="Tešanj" />
                     <String fx:value="Vitez" />
                     <String fx:value="Kiseljak" />
@@ -110,7 +109,7 @@
                 <Label GridPane.rowIndex="0" id="kontaktAdresa" text="Adresa: " />
                 <Label GridPane.rowIndex="1" id="kontaktTelefon" text="Kontakt telefon: " />
                 <Label GridPane.rowIndex="2" id="emailAdresa" text="email: " />
-                <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="AdresaPolje"  />
+                <TextField GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="AdresaPolje" />
                 <TextField GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="telefonpolje"/>
                 <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" fx:id="emailPolje" />
             </children>
@@ -135,7 +134,7 @@
         <children>
             <Label GridPane.rowIndex="0" id="odsjek" text="Odsjek: " />
             <Label GridPane.rowIndex="1" id="ciklusStudija" text="Ciklus: " />
-            <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="izaberi odsjek" >
+            <ComboBox fx:id="smjerBoks" editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="izaberi odsjek" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="AiE" />
@@ -145,7 +144,7 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Izaberi ciklus" >
+            <ComboBox fx:id="ciklusStudija" editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1" promptText="Izaberi ciklus" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Bachelor" />
@@ -158,7 +157,7 @@
             <CheckBox fx:id="redovan" GridPane.rowIndex="3" text="Redovan" GridPane.columnIndex="0" alignment="CENTER_RIGHT" onAction="#redovan" />
             <CheckBox fx:id="Samofinancirajući" GridPane.rowIndex="3" text="Samofinancirajući" GridPane.columnSpan="2" onAction="#samofinancirajući" GridPane.columnIndex="1" alignment="CENTER_RIGHT" />
             <Label GridPane.rowIndex="2"  text="Godina studija:" />
-            <ComboBox editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="izaberi godinu" >
+            <ComboBox fx:id="godinaStudija" editable="false" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2" promptText="izaberi godinu" >
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Prva" />

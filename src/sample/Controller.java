@@ -22,12 +22,20 @@ public class Controller {
     public CheckBox neBoks;
     public CheckBox redovan;
     public CheckBox Samofinancirajući;
+    public ComboBox<String> mjestoRodjenja;
+    public ComboBox smjerBoks;
+    public ComboBox godinaStudija;
+    public ComboBox ciklusStudija;
+    private boolean validanCiklus = false;
+    private boolean godinaValidna = false;
+    private boolean smjerValidan = false;
     private boolean imeValidno;
     private boolean prezimeValidno;
     private boolean brIndeksaValidan;
     private boolean datumValidan = false;
     private boolean jmbgValidan = false;
     private boolean telefonValidan = true;
+    private boolean ispravnoMjesto = false;
     public TextField poljePrezime;
     public DatePicker izborDatuma;
     public TextField poljeIme;
@@ -38,9 +46,9 @@ public class Controller {
     private String status = null;
     private ArrayList<String> nastavci = new ArrayList<String>();
     {
-        nastavci.add("hotmail.com");
-        nastavci.add("gmail.com");
-        nastavci.add("yahoo.com");
+        nastavci.add(".hotmail.com");
+        nastavci.add(".gmail.com");
+        nastavci.add(".yahoo.com");
         nastavci.add("etf.unsa.ba");
     }
     private boolean isImePrezimeValidno(String n){
@@ -60,16 +68,32 @@ public class Controller {
         return !s.trim().isEmpty();
     }
     private boolean isValidanJMBG(String s) {
-        for(int i = 0; i < s.length(); i++){
-            if(!Character.isDigit(s.charAt(i))){
+        int suma = 0;
+        int broj = 7;
+        for(int i = 0; i < s.length(); i++) {
+            if (!Character.isDigit(s.charAt(i)))
                 return false;
-            }
-            if(control != null && s.length() == 13){
-                if(!control.equals(s.substring(0,7)))
+        }
+            if(control != null && s.length() == 13) {
+                if (!control.equals(s.substring(0, 7)))
                     return false;
             }
-        }
-        jmbg = s;
+                if(s.length() == 13){
+                    int j = 0;
+                    while( j < 11 ){
+                        suma = suma + broj*(Integer.valueOf(s.substring(j,j+2)));
+                        System.out.println(Integer.valueOf(s.substring(j,j+2)));
+                        broj -= 1;
+                        j += 2;
+                    }
+                    int cifra = 11 - (suma % 11);
+                    if(cifra > 9) cifra = 0;
+                    System.out.println(s.substring(12,13));
+                    System.out.println( cifra );
+                    if(cifra != Integer.valueOf(s.substring(12,13)))
+                        return false;
+                }
+                jmbg = s;
         return true;
     }
 
@@ -91,12 +115,14 @@ public class Controller {
             control = s2;
         if(control != s2) {
             control = s2;
-            if(!control.equals(jmbg.substring(0,7)) && jmbgValidan && jmbg.length() == 13){
+            if(jmbg.length() == 13)
+            if(!control.equals(jmbg.substring(0,7)) && jmbgValidan ){
                 jmbgPolje.getStyleClass().removeAll("poljeIspravno");
                 jmbgPolje.getStyleClass().add("poljeNeispravno");
                 jmbgValidan = false;
             }
-            if(!jmbgValidan && jmbg.length() == 13 && control.equals(jmbg.substring(0,7))){
+            if(jmbg.length() == 13)
+            if(!jmbgValidan  && control.equals(jmbg.substring(0,7))){
                 jmbgPolje.getStyleClass().removeAll("poljeNeispravno");
                 jmbgPolje.getStyleClass().add("poljeIspravno");
                 jmbgValidan = true;
@@ -201,6 +227,66 @@ public class Controller {
                 }
             }
         });
+        mjestoRodjenja.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!isImePrezimeValidno(newValue) &&  newValue != ""){
+                    mjestoRodjenja.getStyleClass().removeAll("poljeIspravno");
+                    mjestoRodjenja.getStyleClass().add("poljeNeispravno");
+                    ispravnoMjesto = false;
+                }
+                else {
+                    mjestoRodjenja.getStyleClass().removeAll("poljeNeispravno");
+                    mjestoRodjenja.getStyleClass().add("poljeIspravno");
+                    ispravnoMjesto = true;
+                }
+            }
+        });
+        smjerBoks.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!isImePrezimeValidno(newValue) &&  newValue != ""){
+                    smjerBoks.getStyleClass().removeAll("poljeIspravno");
+                    smjerBoks.getStyleClass().add("poljeNeispravno");
+                    smjerValidan = false;
+                }
+                else {
+                    smjerBoks.getStyleClass().removeAll("poljeNeispravno");
+                    smjerBoks.getStyleClass().add("poljeIspravno");
+                    smjerValidan = true;
+                }
+            }
+        });
+        godinaStudija.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!isImePrezimeValidno(newValue) &&  newValue != ""){
+                    godinaStudija.getStyleClass().removeAll("poljeIspravno");
+                    godinaStudija.getStyleClass().add("poljeNeispravno");
+                    godinaValidna = false;
+                }
+                else {
+                    godinaStudija.getStyleClass().removeAll("poljeNeispravno");
+                    godinaStudija.getStyleClass().add("poljeIspravno");
+                    godinaValidna = true;
+                }
+            }
+        });
+        ciklusStudija.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if(!isImePrezimeValidno(newValue) &&  newValue != ""){
+                    ciklusStudija.getStyleClass().removeAll("poljeIspravno");
+                    ciklusStudija.getStyleClass().add("poljeNeispravno");
+                    validanCiklus = false;
+                }
+                else {
+                    ciklusStudija.getStyleClass().removeAll("poljeNeispravno");
+                    ciklusStudija.getStyleClass().add("poljeIspravno");
+                    validanCiklus = true;
+                }
+            }
+        });
     }
     private String korektanUnos(){
         String poruka = "";
@@ -219,7 +305,15 @@ public class Controller {
         if(!neBoks.isSelected() && !daBoks.isSelected())
             poruka = poruka + "Nijedan boks nije selektiran!\n";
         if(!Samofinancirajući.isSelected() && !redovan.isSelected())
-            poruka = poruka + "Niste izbarali da li ste redovan ili samofinancirajući!";
+            poruka = poruka + "Niste izbarali da li ste redovan ili samofinancirajući!\n";
+        if(!ispravnoMjesto)
+            poruka = poruka + "Neispravano mjeato rodjenja!\n";
+        if(!smjerValidan || smjerBoks.getSelectionModel().getSelectedItem() == null)
+            poruka = poruka + "Neispravan odsjek na fakultetu!\n";
+        if(!godinaValidna || godinaStudija.getSelectionModel().getSelectedItem() == null)
+            poruka = poruka + "Neispravna godina studija!";
+        if(!validanCiklus || ciklusStudija.getSelectionModel().getSelectedItem() == null)
+            poruka = poruka + "Neispravna godina studija!";
         return poruka;
 
     }
@@ -237,15 +331,18 @@ public class Controller {
             System.out.println("Prezime: " + poljePrezime.getText());
             System.out.println("Broj indeksa: " + poljeBrojIndeksa.getText());
             System.out.println("Datum rođenja: " + datumRodjenja);
+            System.out.println("Mjesto rodjenja: " + mjestoRodjenja.getSelectionModel().getSelectedItem());
             System.out.println("email: " + emailPolje.getText());
             System.out.println("Adresa: " + AdresaPolje.getText());
             System.out.println("Kontakt telefon: " + telefonpolje.getText());
+            System.out.println("Odsjek na studiju: " + smjerBoks.getSelectionModel().getSelectedItem());
+            System.out.println("Ciklus na studiju: " + ciklusStudija.getSelectionModel().getSelectedItem());
+            System.out.println("Godina studija: " + godinaStudija.getSelectionModel().getSelectedItem());
             if(selekcija != null)
                 System.out.println("Student" + selekcija + "boračkim kategorijama");
             if(status != null)
                 System.out.println("Student je " + status + ".");
         }
-
 
     }
 
@@ -272,4 +369,5 @@ public class Controller {
             redovan.setSelected(false);
         status = "samofinancirajući";
     }
+
 }
