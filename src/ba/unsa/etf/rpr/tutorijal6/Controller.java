@@ -78,21 +78,21 @@ public class Controller {
                 if (!control.equals(s.substring(0, 7)))
                     return false;
             }
-               /* if(s.length() == 13){
+                if(s.length() == 13){
                     int j = 0;
-                    while( j < 11 ){
-                        suma = suma + broj*(Integer.valueOf(s.substring(j,j+1))+Integer.valueOf(s.substring(j+1,j+2)));
-                        System.out.println(Integer.valueOf(s.substring(j,j+2)));
+                    while( j < 6 ){
+                        suma = suma + broj*(Integer.valueOf(s.substring(j,j+1))+Integer.valueOf(s.substring(j+6,j+7)));
                         broj -= 1;
-                        j += 2;
+                        j++;
                     }
                     int cifra = 11 - (suma % 11);
                     if(cifra > 9) cifra = 0;
                     System.out.println(s.substring(12,13));
+                    System.out.println(suma);
                     System.out.println( cifra );
                     if(cifra != Integer.valueOf(s.substring(12,13)))
                         return false;
-                }*/
+                }
                 jmbg = s;
         return true;
     }
